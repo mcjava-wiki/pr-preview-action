@@ -97,6 +97,9 @@ runs:
         org=$(echo "$GITHUB_REPOSITORY" | cut -d "/" -f 1)
         thirdleveldomain=$(echo "$GITHUB_REPOSITORY" | cut -d "/" -f 2 | cut -d "." -f 1 | tr '[:upper:]' '[:lower:]' )
 
+        echo "debug_org=$org" >> $GITHUB_ENV
+        echo "debug_thirdleveldomain=$thirdleveldomain" >> $GITHUB_ENV
+
         if [ "$org" == "$thirdleveldomain" ]; then
           pagesurl="${org}.github.io"
         else
