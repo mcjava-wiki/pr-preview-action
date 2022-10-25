@@ -94,7 +94,7 @@ runs:
         echo "targetdir=$umbrella/pr-$pr" >> "$GITHUB_ENV"
         echo "pr=$pr" >> "$GITHUB_ENV"
 
-        org=$(echo "$GITHUB_REPOSITORY" | cut -d "/" -f 1)
+        org=$(echo "$GITHUB_REPOSITORY" | cut -d "/" -f 1 | tr '[:upper:]' '[:lower:]' )
         thirdleveldomain=$(echo "$GITHUB_REPOSITORY" | cut -d "/" -f 2 | cut -d "." -f 1 | tr '[:upper:]' '[:lower:]' )
 
         echo "debug_org=$org" >> $GITHUB_ENV
