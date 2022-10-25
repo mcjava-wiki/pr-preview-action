@@ -26,9 +26,7 @@ git clone --bare --single-branch --branch "$git_ref" "https://github.com/$github
 
 cd bare_pr_preview || exit 1
 
-action_version=$(git describe --tags --match "v*.*.*" \
-  || git describe --tags \
-  || git rev-parse HEAD)
+action_version=$(git describe --tags || git rev-parse HEAD)
 
 echo "$action_version"
 exit 0
