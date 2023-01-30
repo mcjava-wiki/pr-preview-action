@@ -100,14 +100,6 @@ runs:
         echo "debug_org=$org" >> $GITHUB_ENV
         echo "debug_thirdleveldomain=$thirdleveldomain" >> $GITHUB_ENV
 
-        if [ "$org" == "$thirdleveldomain" ]; then
-          pagesurl="${org}.github.io"
-        else
-          pagesurl=$(echo "$GITHUB_REPOSITORY" | sed 's/\//.github.io\//')
-        fi
-
-        echo "pagesurl=$pagesurl" >> $GITHUB_ENV
-
         echo "emptydir=$(mktemp -d)" >> "$GITHUB_ENV"
         echo "datetime=$(date '+%Y-%m-%d %H:%M %Z')" >> "$GITHUB_ENV"
 
@@ -136,7 +128,7 @@ runs:
 
     - name: Expose deployment URL
       id: url
-      run: echo "::set-output name=url::https://${{ env.pagesurl }}/${{ env.targetdir }}/"
+      run: echo "::set-output name=url::https://preview.mcjava.dev/${{ env.targetdir }}/"
       shell: bash
 
     - name: Leave a comment after deployment
@@ -153,7 +145,7 @@ runs:
           :---:
 
           🛫 Deployed preview to
-          https://${{ env.pagesurl }}/${{ env.targetdir }}/
+          https://preview.mcjava.dev/${{ env.targetdir }}/
 
           on branch [`${{ inputs.preview-branch }}`](\
           ${{ github.server_url }}/${{ github.repository }}\
